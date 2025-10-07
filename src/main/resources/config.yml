@@ -1,0 +1,377 @@
+# Мобы, у которых НЕ падают тыквы (по умолчанию — у всех)
+blacklist-mobs: [ARMOR_STAND]
+
+# Сколько тыкв падать (включительно)
+drop-min: 1
+drop-max: 3
+
+# Шанс дропа в процентах (100.0 = всегда)
+drop-chance: 50.0
+
+# Показывать бабах-частицы и звук при обмене
+effects: true
+
+# Заголовок GUI
+shop-title: "&6Тыквенный Магазин"
+
+# Награды (каждая — отдельный слот в GUI)
+rewards:
+  # ====== БАЗОВЫЕ НАГРАДЫ ======
+  - slot: 0
+    display:
+      material: IRON_SWORD
+      name: "&fМеч Новичка"
+      enchants: { DAMAGE_ALL: 1, DURABILITY: 2 }
+      lore:
+        - "&7Простой, но полезный меч"
+    give:
+      material: IRON_SWORD
+      amount: 1
+      enchants: { DAMAGE_ALL: 1, DURABILITY: 2 }
+    cost-pumpkins: 16
+
+  - slot: 1
+    display:
+      material: SHIELD
+      name: "&fЩит Воина"
+      lore:
+        - "&7Поможет выжить в бою"
+    give:
+      material: SHIELD
+      amount: 1
+    cost-pumpkins: 20
+
+  - slot: 2
+    display:
+      material: GOLDEN_CARROT
+      name: "&6Набор Еды"
+      lore:
+        - "&7Золотые морковки x16"
+    give:
+      material: GOLDEN_CARROT
+      amount: 16
+    cost-pumpkins: 32
+
+  - slot: 3
+    display:
+      material: IRON_PICKAXE
+      name: "&fКирка Шахтёра"
+      enchants: { DIG_SPEED: 2, DURABILITY: 2 }
+      lore:
+        - "&7Немного ускоряет добычу"
+    give:
+      material: IRON_PICKAXE
+      amount: 1
+      enchants: { DIG_SPEED: 2, DURABILITY: 2 }
+    cost-pumpkins: 32
+
+  - slot: 4
+    display:
+      material: DIAMOND
+      name: "&bАлмазы"
+      lore:
+        - "&7Алмазы x3"
+    give:
+      material: DIAMOND
+      amount: 3
+    cost-pumpkins: 32
+
+  - slot: 5
+    display:
+      material: PUMPKIN_SEEDS
+      name: "&aСемена тыквы x8"
+      lore:
+        - "&7Выращивай больше тыкв!"
+    give:
+      material: PUMPKIN_SEEDS
+      amount: 8
+    cost-pumpkins: 2
+
+  # ====== РЕДКИЕ НАГРАДЫ ======
+  - slot: 6
+    display:
+      material: DIAMOND_SWORD
+      name: "&bМеч Ведьмака"
+      enchants: { DAMAGE_ALL: 3, DURABILITY: 3 }
+      lore:
+        - "&7Остро как лезвие"
+        - "&7Для защиты от монстров"
+    give:
+      name: "&bМеч Ведьмака"
+      material: DIAMOND_SWORD
+      amount: 1
+      enchants: { DAMAGE_ALL: 3, DURABILITY: 3 }
+    cost-pumpkins: 64
+
+  - slot: 7
+    display:
+      material: DIAMOND_PICKAXE
+      name: "&bКирка Проходчика"
+      enchants: { DIG_SPEED: 3, DURABILITY: 3 }
+      lore:
+        - "&7Ускоряет добычу руды"
+    give:
+      material: DIAMOND_PICKAXE
+      amount: 1
+      enchants: { DIG_SPEED: 3, DURABILITY: 3 }
+    cost-pumpkins: 64
+
+  - slot: 8
+    display:
+      material: ENDER_PEARL
+      name: "&5Жемчуг Края x8"
+      lore:
+        - "&7Для быстрых перемещений"
+    give:
+      material: ENDER_PEARL
+      amount: 8
+    cost-pumpkins: 64
+
+  - slot: 9
+    display:
+      material: EXPERIENCE_BOTTLE
+      name: "&aБутылочки опыта x16"
+      lore:
+        - "&7Используй для починки предметов"
+    give:
+      material: EXPERIENCE_BOTTLE
+      amount: 16
+    cost-pumpkins: 32
+
+  - slot: 10
+    display:
+      material: BOW
+      name: "&6Лук Снайпера"
+      lore:
+        - "&7Для охоты и PvP"
+      enchants: { ARROW_DAMAGE: 3, DURABILITY: 3, ARROW_INFINITE: 1 }
+    give:
+      material: BOW
+      amount: 1
+      enchants: { ARROW_DAMAGE: 3, DURABILITY: 3, ARROW_INFINITE: 1 }
+    cost-pumpkins: 100
+
+  - slot: 11
+    display:
+      material: ARROW
+      name: "&fСтрелы x64"
+      lore:
+        - "&7Чтобы лук не простаивал"
+    give:
+      material: ARROW
+      amount: 64
+    cost-pumpkins: 10
+
+  # ====== ЭПИЧЕСКИЕ НАГРАДЫ ======
+  - slot: 12
+    display:
+      material: NETHERITE_INGOT
+      name: "&8Незеритовый Слиток"
+      lore:
+        - "&7Для апгрейда снаряжения"
+    give:
+      material: NETHERITE_INGOT
+      amount: 1
+    cost-pumpkins: 148
+
+  - slot: 13
+    display:
+      material: TOTEM_OF_UNDYING
+      name: "&eТотем Бессмертия"
+      lore:
+        - "&7Воскрешает один раз"
+    give:
+      material: TOTEM_OF_UNDYING
+      amount: 1
+    cost-pumpkins: 256
+
+  - slot: 14
+    display:
+      material: ELYTRA
+      name: "&bЭлитры"
+      enchants: { DURABILITY: 3 }
+      lore:
+        - "&7Для полётов над миром"
+    give:
+      material: ELYTRA
+      amount: 1
+      enchants: { DURABILITY: 3 }
+    cost-pumpkins: 512
+
+  - slot: 15
+    display:
+      material: FIREWORK_ROCKET
+      name: "&dФейерверки x32"
+      lore:
+        - "&7Используй с элитрами"
+    give:
+      material: FIREWORK_ROCKET
+      amount: 32
+    cost-pumpkins: 40
+
+  - slot: 16
+    display:
+      material: LEGACY_BEACON
+      name: "&fМаяк"
+      lore:
+          - "&7Символ могущества"
+    give:
+      material: BEACON
+      amount: 1
+    cost-pumpkins: 640
+
+  - slot: 17
+    display:
+      material: ZOMBIE_HEAD
+      name: "&2&lГолова Зомби"
+      lore:
+        - "&7Редкий трофей Хэллоуина"
+        - "&8Укрась базу или надень на себя"
+    give:
+      material: ZOMBIE_HEAD
+      name: "&2&lГолова Зомби"
+      lore:
+        - "&7Редкий трофей Хэллоуина"
+        - "&8Укрась базу или надень на себя"
+      amount: 1
+    cost-pumpkins: 512
+
+        # ====== ДЕКОРАТИВНЫЕ И ФАНОВЫЕ ======
+  - slot: 18
+    display:
+      material: JACK_O_LANTERN
+      name: "&6Светящаяся Тыква"
+      lore:
+              - "&7Укрась свой дом!"
+    give:
+      material: JACK_O_LANTERN
+      amount: 4
+    cost-pumpkins: 12
+
+  - slot: 19
+    display:
+      material: CARVED_PUMPKIN
+      name: "&eРезная тыква"
+      lore:
+        - "&7Для хэллоуинского декора"
+    give:
+      material: CARVED_PUMPKIN
+      amount: 4
+    cost-pumpkins: 4
+
+  - slot: 20
+    display:
+      material: PLAYER_HEAD
+      name: "&dГолова вампира"
+      lore:
+        - "&7Коллекционный предмет"
+    give:
+      name: "&dГолова вампира"
+      material: PLAYER_HEAD
+      lore:
+        - "&7Коллекционный предмет"
+        - "&8Редкий трофей Хэллоуина"
+      amount: 1
+    cost-pumpkins: 512
+
+  - slot: 21
+    display:
+      material: GOLDEN_SWORD
+      name: "&6&lМеч Тыквенного Короля"
+      lore:
+        - "&7Особый предмет ивента"
+        - "&eИзлучает осеннюю магию"
+      enchants: {DAMAGE_ALL: 5, FIRE_ASPECT: 2, DURABILITY: 3}
+    give:
+      material: GOLDEN_SWORD
+      name: "&6&lМеч Тыквенного Короля"
+      lore:
+        - "&7Особый предмет ивента"
+        - "&eИзлучает осеннюю магию"
+      amount: 1
+      enchants: {DAMAGE_ALL: 5, FIRE_ASPECT: 2, DURABILITY: 3}
+    cost-pumpkins: 150
+
+    # ====== ЛЕГЕНДАРНЫЕ НАГРАДЫ ======
+
+  - slot: 22
+    display:
+      material: NETHERITE_PICKAXE
+      name: "&5&lПризрачная кирка"
+      lore:
+        - "&7Особый предмет ивента"
+        - "&7Сквозь камень как по воздуху"
+      enchants: { DIG_SPEED: 5, DURABILITY: 3, LOOT_BONUS_BLOCKS: 3, MENDING: 1 }
+    give:
+      material: NETHERITE_PICKAXE
+      name: "&5&lПризрачная кирка"
+      lore:
+      - "&7Особый предмет ивента"
+      - "&7Сквозь камень как по воздуху"
+      amount: 1
+      enchants: { DIG_SPEED: 5, DURABILITY: 3, LOOT_BONUS_BLOCKS: 3, MENDING: 1 }
+    cost-pumpkins: 1250
+
+  - slot: 23
+    display:
+      material: NETHERITE_HELMET
+      name: "&4&lВампирский Шлем"
+      lore:
+        - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    give:
+      material: NETHERITE_HELMET
+      amount: 1
+      name: "&4&lВампирский Шлем"
+      lore:
+          - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    cost-pumpkins: 1360
+
+  - slot: 24
+    display:
+      material: NETHERITE_CHESTPLATE
+      name: "&4&lВампирский Нагрудник"
+      lore:
+          - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    give:
+      material: NETHERITE_CHESTPLATE
+      amount: 1
+      name: "&4&lВампирский Нагрудник"
+      lore:
+          - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    cost-pumpkins: 1360
+
+  - slot: 25
+    display:
+      material: NETHERITE_LEGGINGS
+      name: "&4&lВампирские Поножи"
+      lore:
+        - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    give:
+      material: NETHERITE_LEGGINGS
+      amount: 1
+      name: "&4&lВампирские Поножи"
+      lore:
+        - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    cost-pumpkins: 1360
+
+  - slot: 26
+    display:
+      material: NETHERITE_BOOTS
+      name: "&4&lВампирские Ботинки"
+      lore:
+        - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    give:
+      material: NETHERITE_BOOTS
+      amount: 1
+      name: "&4&lВампирские Ботинки"
+      lore:
+         - "&7Тянет силу из тьмы"
+      enchants: { PROTECTION_ENVIRONMENTAL: 4, THORNS: 3, DURABILITY: 3 }
+    cost-pumpkins: 1360

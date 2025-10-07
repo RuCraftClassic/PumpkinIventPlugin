@@ -1,0 +1,14 @@
+name: PumpkinIventPlugin
+main: ru.craft.classic.PumpkinEventPlugin
+version: 1.0.0
+api-version: 1.20
+author: Kalimulin.D.A
+commands:
+  pumpkin:
+    description: Pumpkin Event commands
+    aliases: [pumpkinevent, pe]
+    usage: /<command> [shop|reload]
+permissions:
+  pumpkin.reload:
+    default: op
+    description: Reload plugin config
