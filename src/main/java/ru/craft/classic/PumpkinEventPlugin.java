@@ -9,50 +9,117 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PumpkinEventPlugin extends JavaPlugin {
 
+    private EventItemManager items;
+    private DropListener dropListener;
     private ShopManager shop;
+    private BossManager bossManager;
+    private LanternListener lanternListener;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        this.shop = new ShopManager(this);
-        Bukkit.getPluginManager().registerEvents(new DropListener(this), this);
-        getLogger().info("PumpkinEventPlugin запущен!");
+
+        items = new EventItemManager(this);
+        dropListener = new DropListener(this, items);
+        bossManager = new BossManager(this, items);
+        shop = new ShopManager(this, items);
+        lanternListener = new LanternListener(this, items);
+
+        Bukkit.getPluginManager().registerEvents(dropListener, this);
+        Bukkit.getPluginManager().registerEvents(bossManager, this);
+        Bukkit.getPluginManager().registerEvents(shop, this);
+        Bukkit.getPluginManager().registerEvents(lanternListener, this);
+        getLogger().info("PumpkinEventPlugin 2.0 enabled");
     }
 
     @Override
     public void onDisable() {
-        if (shop != null) shop.closeAll();
+        if (lanternListener != null) lanternListener.shutdown();
+        if (bossManager != null) bossManager.shutdown();
+        if (shop != null) {
+            shop.closeAll();
+            shop.unregister();
+        }
     }
 
-    public ShopManager getShop() {
-        return shop;
+    public BossManager getBossManager() {
+        return bossManager;
     }
 
-    public String color(String s) { return ChatColor.translateAlternateColorCodes('&', s); }
+    public String color(String text) {
+        return ChatColor.translateAlternateColorCodes('&', text == null ? "" : text);
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Только для игроков.");
-            return true;
-        }
-        Player p = (Player) sender;
-
         if (args.length == 0 || args[0].equalsIgnoreCase("shop")) {
-            shop.open(p);
-            return true;
-        }
-        if (args[0].equalsIgnoreCase("reload")) {
-            if (!p.hasPermission("pumpkin.reload")) {
-                p.sendMessage(ChatColor.RED + "Нет прав.");
+            if (!(sender instanceof Player player)) {
+                sender.sendMessage("Only players can open the shop.");
                 return true;
             }
-            reloadConfig();
-            shop.reload();
-            p.sendMessage(ChatColor.GREEN + "Конфиг перезагружен.");
+            shop.open(player);
             return true;
         }
-        p.sendMessage(ChatColor.YELLOW + "Использование: /" + label + " [shop|reload]");
+
+        if (args[0].equalsIgnoreCase("reload")) {
+            if (!sender.hasPermission("pumpkin.reload")) {
+                sender.sendMessage(ChatColor.RED + "Нет прав.");
+                return true;
+            }
+            shop.closeAll();
+            reloadConfig();
+            dropListener.reload();
+            bossManager.reload();
+            shop.reload();
+            lanternListener.reload();
+            sender.sendMessage(ChatColor.GREEN + "PumpkinEventPlugin перезагружен.");
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("boss")) {
+            if (args.length == 1) {
+                sender.sendMessage(color("&6&lТыквенный Король"));
+                for (String line : bossManager.getStatusLines()) sender.sendMessage(color(line));
+                return true;
+            }
+
+            String sub = args[1].toLowerCase();
+            if (sub.equals("start")) {
+                if (!sender.hasPermission("pumpkin.admin")) {
+                    sender.sendMessage(ChatColor.RED + "Нет прав.");
+                    return true;
+                }
+                bossManager.startManual();
+                sender.sendMessage(color("&aПопытка запуска Тыквенного Короля выполнена."));
+                return true;
+            }
+
+            if (sub.equals("stop")) {
+                if (!sender.hasPermission("pumpkin.admin")) {
+                    sender.sendMessage(ChatColor.RED + "Нет прав.");
+                    return true;
+                }
+                bossManager.stopManual();
+                sender.sendMessage(color("&eБой остановлен."));
+                return true;
+            }
+
+            if (sub.equals("setspawn")) {
+                if (!sender.hasPermission("pumpkin.admin")) {
+                    sender.sendMessage(ChatColor.RED + "Нет прав.");
+                    return true;
+                }
+                if (!(sender instanceof Player player)) {
+                    sender.sendMessage("Эту команду нужно выполнить игроком на арене.");
+                    return true;
+                }
+                bossManager.setSpawn(player.getLocation());
+                sender.sendMessage(color("&aТочка появления Тыквенного Короля сохранена."));
+                return true;
+            }
+        }
+
+        sender.sendMessage(color("&eИспользование: /" + label + " [shop|boss|reload]"));
         return true;
     }
 }
