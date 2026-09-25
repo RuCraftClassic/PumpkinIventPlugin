@@ -1,6 +1,5 @@
 package ru.craft.classic;
 
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
@@ -10,13 +9,15 @@ public class Reward {
     public final int slot;
     public final ItemStack display;
     public final ItemStack toGive;
-    public final int cost;
+    public final int pumpkinCost;
+    public final int shardCost;
 
-    public Reward(int slot, ItemStack display, ItemStack toGive, int cost) {
+    public Reward(int slot, ItemStack display, ItemStack toGive, int pumpkinCost, int shardCost) {
         this.slot = slot;
         this.display = display;
         this.toGive = toGive;
-        this.cost = cost;
+        this.pumpkinCost = pumpkinCost;
+        this.shardCost = shardCost;
     }
 
     @SuppressWarnings("deprecation")
@@ -29,7 +30,8 @@ public class Reward {
                     int lvl = Integer.parseInt(e.getValue().toString());
                     stack.addUnsafeEnchantment(en, lvl);
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 }
